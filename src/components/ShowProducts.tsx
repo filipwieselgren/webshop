@@ -24,6 +24,7 @@ export const ShowProducts = () => {
   });
 
   const [cart, setCart] = useState<ICart[]>([]);
+  const [cartAmount, setCartAmount] = useState(0);
 
   useEffect(() => {
     axios.get<IMovies[]>(apiUrl).then((response) => {
@@ -47,8 +48,12 @@ export const ShowProducts = () => {
 
     if (!movieExists) {
       setCart([...cart, { movie: movie, amount: 1, id: movie.id }]);
+
+      // setCartAmount();
     } else {
       setCart(temp);
+
+      // setCartAmount(moreAmount++);
     }
   };
 
@@ -97,9 +102,11 @@ export const ShowProducts = () => {
     );
   }
 
+  console.log(cartAmount);
+
   return (
     <>
-      <Navbar />
+      <Navbar cart={cart} />
       {html}
       <div className="movie-main-container">{showMovies}</div>
     </>
