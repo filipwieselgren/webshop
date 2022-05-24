@@ -20,7 +20,7 @@ export const ShowModal = (props: IModal) => {
       <div>Released: {props.singleMovie.year}</div>
       <div>Price: {props.singleMovie.price} :-</div>
 
-      <button onClick={closeModal} className="btn-global">
+      <button onClick={closeModal} className="btn-global btn-close">
         Close
       </button>
     </div>

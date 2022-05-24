@@ -24,7 +24,6 @@ export const ShowProducts = () => {
   });
 
   const [cart, setCart] = useState<ICart[]>([]);
-  const [cartAmount, setCartAmount] = useState(0);
 
   useEffect(() => {
     axios.get<IMovies[]>(apiUrl).then((response) => {
@@ -64,18 +63,21 @@ export const ShowProducts = () => {
           <div className="img-container">
             <img src={m.imageUrl} alt="Movie image" className="img" />
           </div>
-          <div className="price">{m.price} :-</div>
-          <div className="btn-container">
-            <MoreInfo
-              movie={m}
-              setModal={setModal}
-              setMovie={setMovie}
-              setSingleMovie={setSingleMovie}
-              setMovieContainer={setMovieContainer}
-              updateCart={updateCart}
-              movieContainer={movieContainer}
-              modal={modal}
-            />
+          <div className="info-container">
+            <h3 className="movie-name">{m.name}</h3>
+            <div className="price">Price: {m.price} :-</div>
+            <div className="btn-container">
+              <MoreInfo
+                movie={m}
+                setModal={setModal}
+                setMovie={setMovie}
+                setSingleMovie={setSingleMovie}
+                setMovieContainer={setMovieContainer}
+                updateCart={updateCart}
+                movieContainer={movieContainer}
+                modal={modal}
+              />
+            </div>
           </div>
         </div>
       );
@@ -102,7 +104,7 @@ export const ShowProducts = () => {
     );
   }
 
-  console.log(cartAmount);
+  console.log(movie);
 
   return (
     <>
