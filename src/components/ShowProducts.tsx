@@ -34,14 +34,22 @@ export const ShowProducts = () => {
   if (!movie) return null;
 
   const updateCart = (movie: IMovies): void => {
-    cart.map((ca) => {
-      if (!movie) {
-        // setCart([...cart, new ICart(ca.movie, ca.amount++)()]);
-        // setCart(result);
-      } else {
-        return;
+    let movieExists = false;
+
+    let temp = [...cart];
+
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].id === movie.id) {
+        movieExists = true;
+        temp[i].amount++;
       }
-    });
+    }
+
+    if (!movieExists) {
+      setCart([...cart, { movie: movie, amount: 1, id: movie.id }]);
+    } else {
+      setCart(temp);
+    }
   };
 
   const showMovies = movie.map((m) => {

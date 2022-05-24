@@ -1,10 +1,7 @@
 import { IMovies } from "./IMovies";
 
-export class ICart {
-  constructor(public movie: IMovies, public amount: number) {
-    (this.movie = movie), (this.amount = amount);
-  }
-
-  // movie: IMovies;
-  // amount: number;
+export interface ICart {
+  movie: IMovies;
+  amount: number;
+  id: number;
 }
