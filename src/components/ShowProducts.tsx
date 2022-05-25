@@ -34,7 +34,7 @@ export const ShowProducts = () => {
 
   if (!movie) return null;
 
-  const updateCart = (movie: IMovies): void => {
+  const addToCart = (movie: IMovies): void => {
     let movieExists = false;
 
     let temp = [...cart];
@@ -64,7 +64,7 @@ export const ShowProducts = () => {
             setMovie={setMovie}
             setSingleMovie={setSingleMovie}
             setMovieContainer={setMovieContainer}
-            updateCart={updateCart}
+            addToCart={addToCart}
             movieContainer={movieContainer}
             modal={modal}
           />
@@ -92,8 +92,6 @@ export const ShowProducts = () => {
       </div>
     );
   }
-
-  console.log(movie);
 
   return (
     <>
