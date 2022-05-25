@@ -2,8 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { ICart } from "../models/ICart";
 import { IMovies } from "../models/IMovies";
-import { MoreInfo } from "./MoreInfo";
+import { BtnProductContainer } from "./BtnProductContainer";
 import { Navbar } from "./Navbar";
+import { ProductContainer } from "./ProductContainer";
 import { ShowModal } from "./ShowModal";
 
 const apiUrl =
@@ -47,12 +48,8 @@ export const ShowProducts = () => {
 
     if (!movieExists) {
       setCart([...cart, { movie: movie, amount: 1, id: movie.id }]);
-
-      // setCartAmount();
     } else {
       setCart(temp);
-
-      // setCartAmount(moreAmount++);
     }
   };
 
@@ -60,25 +57,17 @@ export const ShowProducts = () => {
     if (movieContainer && m.imageUrl) {
       return (
         <div key={m.id} className="single-movie-container">
-          <div className="img-container">
-            <img src={m.imageUrl} alt="Movie image" className="img" />
-          </div>
-          <div className="info-container">
-            <h3 className="movie-name">{m.name}</h3>
-            <div className="price">Price: {m.price} :-</div>
-            <div className="btn-container">
-              <MoreInfo
-                movie={m}
-                setModal={setModal}
-                setMovie={setMovie}
-                setSingleMovie={setSingleMovie}
-                setMovieContainer={setMovieContainer}
-                updateCart={updateCart}
-                movieContainer={movieContainer}
-                modal={modal}
-              />
-            </div>
-          </div>
+          <ProductContainer movie={m} />
+          <BtnProductContainer
+            movie={m}
+            setModal={setModal}
+            setMovie={setMovie}
+            setSingleMovie={setSingleMovie}
+            setMovieContainer={setMovieContainer}
+            updateCart={updateCart}
+            movieContainer={movieContainer}
+            modal={modal}
+          />
         </div>
       );
     } else {
