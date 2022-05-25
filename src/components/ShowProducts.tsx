@@ -3,8 +3,9 @@ import React, { useEffect, useState } from "react";
 import { ICart } from "../models/ICart";
 import { IMovies } from "../models/IMovies";
 import { BtnProductContainer } from "./BtnProductContainer";
-import { Navbar } from "./Navbar";
+import { Cart } from "./Cart";
 import { ProductContainer } from "./ProductContainer";
+import { Search } from "./Search";
 import { ShowModal } from "./ShowModal";
 
 const apiUrl =
@@ -95,7 +96,11 @@ export const ShowProducts = () => {
 
   return (
     <>
-      <Navbar cart={cart} />
+      <nav className="navbar-container">
+        <div className="logo">Logo</div>
+        <Search />
+        <Cart cart={cart} />
+      </nav>
       {html}
       <div className="movie-main-container">{showMovies}</div>
     </>

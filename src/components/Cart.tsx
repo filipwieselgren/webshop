@@ -4,7 +4,7 @@ interface ICartCount {
   cart: ICart[];
 }
 
-export const Navbar = (props: ICartCount) => {
+export const Cart = (props: ICartCount) => {
   let cartCountHtml = <div className="cart">Cart</div>;
 
   const totalCartItem = props.cart.reduce((acc, cur) => {
@@ -15,11 +15,5 @@ export const Navbar = (props: ICartCount) => {
     cartCountHtml = <div className="cart">Cart {totalCartItem}</div>;
   }
 
-  return (
-    <nav className="navbar-container">
-      <div className="logo">Logo</div>
-      <div className="search-bar">Search bar </div>
-      {cartCountHtml}
-    </nav>
-  );
+  return <> {cartCountHtml} </>;
 };
