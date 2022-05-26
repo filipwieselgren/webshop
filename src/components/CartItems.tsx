@@ -6,16 +6,17 @@ interface IMoviesInCart {
 
   openCart(): void;
   addToCart(m: IMovies): void;
+  removeFromCart(m: IMovies, amount: number): void;
 }
 
 export const CartItems = (props: IMoviesInCart) => {
-  const getCloseCart = () => {
-    props.openCart();
-  };
+  const getCloseCart = () => props.openCart();
 
-  const addItemToCart = (m: IMovies) => {
-    props.addToCart(m);
-  };
+  const addItemToCart = (m: IMovies) => props.addToCart(m);
+
+  const removeItemFromCart = (m: IMovies, amount: number) =>
+    props.removeFromCart(m, amount);
+
   const totalCartCost = props.cart.reduce((acc, cur) => {
     return acc + cur.amount * cur.movie.price;
   }, 0);
@@ -45,7 +46,14 @@ export const CartItems = (props: IMoviesInCart) => {
             >
               Add
             </button>
-            <button className="cart-items-btn remove">Remove</button>
+            <button
+              className="cart-items-btn remove"
+              onClick={() => {
+                removeItemFromCart(c.movie, c.amount);
+              }}
+            >
+              Remove
+            </button>
           </div>
         </div>
       );

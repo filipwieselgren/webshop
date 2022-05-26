@@ -18,7 +18,7 @@
 }
 
 .cart-container {
-  width: 100vw;
+  width: 100%;
   height: 80vh;
   z-index: 100;
   display: flex;
@@ -31,7 +31,7 @@
 .cart-list {
   border-left: 1px solid #333;
   min-height: 20%;
-  width: 20vw;
+  width: 25vw;
   background-color: white;
   overflow: scroll;
 }
@@ -39,7 +39,8 @@
 .cart-total-container {
   background-color: white;
   border-bottom: 1px solid #333;
-  width: 20vw;
+  min-width: 25vw;
+  max-width: 25vw;
   border-left: 1px solid #333;
 }
 

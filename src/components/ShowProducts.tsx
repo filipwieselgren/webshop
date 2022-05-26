@@ -57,6 +57,20 @@ export const ShowProducts = () => {
     }
   };
 
+  const removeFromCart = (m: IMovies, amount: number): void => {
+    let checkCart = [...cart];
+
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].id === m.id && amount > 1) {
+        checkCart[i].amount--;
+        setCart(checkCart);
+      } else if (cart[i].id === m.id && amount === 1) {
+        checkCart.splice(i, 1);
+        setCart(checkCart);
+      }
+    }
+  };
+
   const showMovies = movie.map((m) => {
     if (movieContainer && m.imageUrl) {
       return (
@@ -87,12 +101,17 @@ export const ShowProducts = () => {
   });
 
   let cartItems = <></>;
-  const openCart = () => {
-    setShowCartItems(!showCartItems);
-  };
+
+  const openCart = () => setShowCartItems(!showCartItems);
+
   if (showCartItems) {
     cartItems = (
-      <CartItems cart={cart} openCart={openCart} addToCart={addToCart} />
+      <CartItems
+        cart={cart}
+        openCart={openCart}
+        addToCart={addToCart}
+        removeFromCart={removeFromCart}
+      />
     );
   }
 
