@@ -4,6 +4,7 @@ import { ICart } from "../models/ICart";
 import { IMovies } from "../models/IMovies";
 import { BtnProductContainer } from "./BtnProductContainer";
 import { Cart } from "./Cart";
+import { CartItems } from "./CartItems";
 import { ProductContainer } from "./ProductContainer";
 import { Search } from "./Search";
 import { ShowModal } from "./ShowModal";
@@ -26,6 +27,8 @@ export const ShowProducts = () => {
   });
 
   const [cart, setCart] = useState<ICart[]>([]);
+  const [displayInfo, setDisplayInfo] = useState<boolean>(false);
+  const [showCartItems, setShowCartItems] = useState<boolean>(false);
 
   useEffect(() => {
     axios.get<IMovies[]>(apiUrl).then((response) => {
@@ -58,7 +61,11 @@ export const ShowProducts = () => {
     if (movieContainer && m.imageUrl) {
       return (
         <div key={m.id} className="single-movie-container">
-          <ProductContainer movie={m} />
+          <ProductContainer
+            movie={m}
+            setDisplayInfo={setDisplayInfo}
+            displayInfo={displayInfo}
+          />
           <BtnProductContainer
             movie={m}
             setModal={setModal}
@@ -75,6 +82,14 @@ export const ShowProducts = () => {
       return;
     }
   });
+
+  let cartItems = <></>;
+  const openCart = () => {
+    setShowCartItems(!showCartItems);
+  };
+  if (showCartItems) {
+    cartItems = <CartItems cart={cart} />;
+  }
 
   let html = <></>;
 
@@ -99,8 +114,9 @@ export const ShowProducts = () => {
       <nav className="navbar-container">
         <div className="logo">Logo</div>
         <Search />
-        <Cart cart={cart} />
+        <Cart cart={cart} openCart={openCart} />
       </nav>
+      {cartItems}
       {html}
       <div className="movie-main-container">{showMovies}</div>
     </>
