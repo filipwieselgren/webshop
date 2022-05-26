@@ -1,5 +1,6 @@
 import { ICart } from "../models/ICart";
-import { IMovies } from "../models/IMovies";
+import cartEmptyImg from "../cart-empty.png";
+import cartNotEmptyImg from "../cart-not-empty.png";
 
 interface ICartCount {
   cart: ICart[];
@@ -17,14 +18,15 @@ export const Cart = (props: ICartCount) => {
 
   let cartCountHtml = (
     <div className="cart" onClick={showCart}>
-      <div>Cart</div>
+      <img className="cartimg-nav" src={cartEmptyImg} alt="Cart image" />
     </div>
   );
 
   if (totalCartItem > 0) {
     cartCountHtml = (
       <div className="cart" onClick={showCart}>
-        <div>Cart {totalCartItem}</div>
+        <img className="cartimg-nav" src={cartNotEmptyImg} alt="Cart image" />
+        <span className="total-cart-item">{totalCartItem}</span>
       </div>
     );
   }

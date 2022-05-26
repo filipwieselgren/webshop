@@ -39,7 +39,7 @@ export const CartItems = (props: IMoviesInCart) => {
           </div>
           <div className="cart-items-btn-container">
             <button
-              className="cart-items-btn add"
+              className="btn-global cart-items-btn add"
               onClick={() => {
                 addItemToCart(c.movie);
               }}
@@ -47,7 +47,7 @@ export const CartItems = (props: IMoviesInCart) => {
               Add
             </button>
             <button
-              className="cart-items-btn remove"
+              className="btn-global cart-items-btn remove"
               onClick={() => {
                 removeItemFromCart(c.movie, c.amount);
               }}

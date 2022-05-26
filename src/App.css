@@ -14,7 +14,23 @@
   margin-left: 5em;
 }
 .cart {
-  margin-right: 10em;
+  margin-right: 2em;
+  display: flex;
+  align-items: center;
+}
+
+.cart:hover {
+  cursor: pointer;
+}
+
+.cartimg-nav {
+  width: 5em;
+}
+
+.total-cart-item {
+  position: absolute;
+  margin: 0px 0px 20px 35px;
+  color: rgb(87, 182, 120);
 }
 
 .cart-container {
@@ -25,13 +41,12 @@
   flex-direction: column;
   align-items: flex-end;
   position: fixed;
-  overflow: scroll;
 }
 
 .cart-list {
   border-left: 1px solid #333;
   min-height: 20%;
-  width: 25vw;
+  width: 80vw;
   background-color: white;
   overflow: scroll;
 }
@@ -39,8 +54,7 @@
 .cart-total-container {
   background-color: white;
   border-bottom: 1px solid #333;
-  min-width: 25vw;
-  max-width: 25vw;
+  width: 80vw;
   border-left: 1px solid #333;
 }
 
@@ -69,6 +83,10 @@
   padding: 10px;
 }
 
+.to-payment-btn:hover {
+  cursor: pointer;
+}
+
 .cart-items {
   border-bottom: 1px solid #333;
   border-left: 1px solid #333;
@@ -89,6 +107,8 @@
 
 .cart-empty {
   color: #333;
+  text-align: center;
+  margin-top: 2em;
 }
 
 .cart-items-btn {
@@ -184,13 +204,6 @@
   align-items: flex-start;
   display: flex;
 }
-/* .info-container-show {
-  padding: 1em;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-} */
 
 .movie-name-container {
   display: flex;
@@ -210,6 +223,7 @@
 .btn-global {
   padding: 0.5em;
   width: 50%;
+  transition: all 0.2s ease-in-out;
 }
 
 .btn-buy {
@@ -226,9 +240,21 @@
   color: white;
 }
 
-.btn-close {
-}
-
 .btn-global:hover {
   cursor: pointer;
+  transform: scale(1.05);
+}
+
+@media only screen and (min-width: 768px) {
+  .cart-list,
+  .cart-total-container {
+    width: 50vw;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .cart-list,
+  .cart-total-container {
+    width: 25vw;
+  }
 }
