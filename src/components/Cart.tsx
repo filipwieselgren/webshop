@@ -17,14 +17,14 @@ export const Cart = (props: ICartCount) => {
 
   let cartCountHtml = (
     <div className="cart" onClick={showCart}>
-      Cart
+      <div>Cart</div>
     </div>
   );
 
   if (totalCartItem > 0) {
     cartCountHtml = (
       <div className="cart" onClick={showCart}>
-        Cart | {totalCartItem}
+        <div>Cart {totalCartItem}</div>
       </div>
     );
   }

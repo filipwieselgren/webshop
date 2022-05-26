@@ -2,9 +2,13 @@ import { ICart } from "../models/ICart";
 
 interface IMoviesInCart {
   cart: ICart[];
+  openCart(): void;
 }
 
 export const CartItems = (props: IMoviesInCart) => {
+  const getCloseCart = () => {
+    props.openCart();
+  };
   const totalCartCost = props.cart.reduce((acc, cur) => {
     return acc + cur.amount * cur.movie.price;
   }, 0);
@@ -47,7 +51,10 @@ export const CartItems = (props: IMoviesInCart) => {
       <div className="cart-container">
         <div className="cart-total-container">
           <div className="cart-total">
-            Total items: {totalCartItem} | Total cost: {totalCartCost} :-
+            <span className="close-cart" onClick={getCloseCart}>
+              X
+            </span>{" "}
+            | Total items: {totalCartItem} | Total cost: {totalCartCost} :-
           </div>
           <button className="to-payment-btn">To payment</button>
         </div>

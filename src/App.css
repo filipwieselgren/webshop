@@ -46,6 +46,17 @@
 .cart-total {
   padding: 10px;
   text-align: center;
+  width: 100%;
+}
+
+.close-cart {
+  color: white;
+  padding: 5px;
+  background-color: rgb(40, 40, 97);
+}
+
+.close-cart:hover {
+  cursor: pointer;
 }
 .to-payment-btn {
   width: 100%;
@@ -152,6 +163,10 @@
 }
 .img-container {
   min-height: 16em;
+}
+
+.img-container:hover {
+  cursor: pointer;
 }
 
 .img-frontpage {
