@@ -29,7 +29,6 @@ export const ShowProducts = () => {
   const [cart, setCart] = useState<ICart[]>([]);
   const [displayInfo, setDisplayInfo] = useState<boolean>(false);
   const [showCartItems, setShowCartItems] = useState<boolean>(false);
-  const [closeCart, setCloseCart] = useState<boolean>(false);
 
   useEffect(() => {
     axios.get<IMovies[]>(apiUrl).then((response) => {
@@ -92,7 +91,9 @@ export const ShowProducts = () => {
     setShowCartItems(!showCartItems);
   };
   if (showCartItems) {
-    cartItems = <CartItems cart={cart} openCart={openCart} />;
+    cartItems = (
+      <CartItems cart={cart} openCart={openCart} addToCart={addToCart} />
+    );
   }
 
   let html = <></>;

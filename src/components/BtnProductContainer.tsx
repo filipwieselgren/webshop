@@ -1,5 +1,3 @@
-import { moveEmitHelpers } from "typescript";
-import { ICart } from "../models/ICart";
 import { IMovies } from "../models/IMovies";
 
 interface ProductContainer {

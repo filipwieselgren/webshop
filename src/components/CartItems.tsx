@@ -1,13 +1,20 @@
 import { ICart } from "../models/ICart";
+import { IMovies } from "../models/IMovies";
 
 interface IMoviesInCart {
   cart: ICart[];
+
   openCart(): void;
+  addToCart(m: IMovies): void;
 }
 
 export const CartItems = (props: IMoviesInCart) => {
   const getCloseCart = () => {
     props.openCart();
+  };
+
+  const addItemToCart = (m: IMovies) => {
+    props.addToCart(m);
   };
   const totalCartCost = props.cart.reduce((acc, cur) => {
     return acc + cur.amount * cur.movie.price;
@@ -30,7 +37,14 @@ export const CartItems = (props: IMoviesInCart) => {
             <div>Cost: {c.movie.price * c.amount} :-</div>
           </div>
           <div className="cart-items-btn-container">
-            <button className="cart-items-btn add">Add</button>
+            <button
+              className="cart-items-btn add"
+              onClick={() => {
+                addItemToCart(c.movie);
+              }}
+            >
+              Add
+            </button>
             <button className="cart-items-btn remove">Remove</button>
           </div>
         </div>
