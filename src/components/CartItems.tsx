@@ -17,10 +17,18 @@ export const CartItems = (props: IMoviesInCart) => {
     if (props.cart) {
       return (
         <div className="cart-items" key={c.id}>
-          <img className="movie-img-cart" src={c.movie.imageUrl} alt="" />
-          <div>{c.movie.name}</div>
-          <div>{c.amount} in your cart.</div>
-          <div>Cost: {c.movie.price * c.amount} :-</div>
+          <div className="cart-info-container">
+            <div className="cart-img-container">
+              <img className="movie-img-cart" src={c.movie.imageUrl} alt="" />
+            </div>
+            <div>{c.movie.name}</div>
+            <div>{c.amount} in your cart.</div>
+            <div>Cost: {c.movie.price * c.amount} :-</div>
+          </div>
+          <div className="cart-items-btn-container">
+            <button className="cart-items-btn add">Add</button>
+            <button className="cart-items-btn remove">Remove</button>
+          </div>
         </div>
       );
     } else {
@@ -37,8 +45,11 @@ export const CartItems = (props: IMoviesInCart) => {
   return (
     <>
       <div className="cart-container">
-        <div className="cart-total">
-          Total items: {totalCartItem} | Total cost: {totalCartCost} :-
+        <div className="cart-total-container">
+          <div className="cart-total">
+            Total items: {totalCartItem} | Total cost: {totalCartCost} :-
+          </div>
+          <button className="to-payment-btn">To payment</button>
         </div>
         <div className="cart-list">
           {moviesInCart} {cartEmpty}
