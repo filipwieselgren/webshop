@@ -106,7 +106,7 @@
 }
 
 .cart-empty {
-  color: #333;
+  color: rgb(40, 40, 97);
   text-align: center;
   margin-top: 2em;
 }
