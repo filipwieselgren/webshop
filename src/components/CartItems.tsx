@@ -3,10 +3,10 @@ import { IMovies } from "../models/IMovies";
 
 interface IMoviesInCart {
   cart: ICart[];
-
   openCart(): void;
   addToCart(m: IMovies): void;
   removeFromCart(m: IMovies, amount: number): void;
+  toPayment(): void;
 }
 
 export const CartItems = (props: IMoviesInCart) => {
@@ -14,8 +14,13 @@ export const CartItems = (props: IMoviesInCart) => {
 
   const addItemToCart = (m: IMovies) => props.addToCart(m);
 
-  const removeItemFromCart = (m: IMovies, amount: number) =>
+  const removeItemFromCart = (m: IMovies, amount: number) => {
     props.removeFromCart(m, amount);
+  };
+
+  const goToPayment = () => {
+    props.toPayment();
+  };
 
   const totalCartCost = props.cart.reduce((acc, cur) => {
     return acc + cur.amount * cur.movie.price;
@@ -73,12 +78,14 @@ export const CartItems = (props: IMoviesInCart) => {
       <div className="cart-container">
         <div className="cart-total-container">
           <div className="cart-total">
-            <span className="close-cart" onClick={getCloseCart}>
+            <button className="close-cart" onClick={getCloseCart}>
               X
-            </span>{" "}
-            | Total items: {totalCartItem} | Total cost: {totalCartCost} :-
+            </button>{" "}
+            Total items: {totalCartItem} | Total cost: {totalCartCost} :-
           </div>
-          <button className="to-payment-btn">To payment</button>
+          <button className="to-payment-btn" onClick={goToPayment}>
+            To payment
+          </button>
         </div>
         <div className="cart-list">
           {moviesInCart} {cartEmpty}

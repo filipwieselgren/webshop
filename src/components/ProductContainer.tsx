@@ -10,9 +10,6 @@ interface IProducts {
 }
 
 export const ProductContainer = (props: IProducts) => {
-  // const showInfo = () => {
-  //   props.setDisplayInfo(true);
-  // };
   const showMovieInfo = () => {
     props.setSingleMovie(props.movie);
     props.setModal(!props.modal);
@@ -20,22 +17,9 @@ export const ProductContainer = (props: IProducts) => {
 
   let infoContainer = <></>;
 
-  // if (props.displayInfo === true) {
-  //   infoContainer = (
-  //     <div className="info-container">
-  //       <h3 className="movie-name">{props.movie.name}</h3>
-  //       <div className="price">Price: {props.movie.price} :-</div>
-  //     </div>
-  //   );
-  // }
-
   return (
     <>
-      <div
-        key={props.movie.id}
-        className="img-container"
-        // onMouseEnter={showInfo}
-      >
+      <div key={props.movie.id} className="img-container">
         <img
           src={props.movie.imageUrl}
           alt="Movie image"

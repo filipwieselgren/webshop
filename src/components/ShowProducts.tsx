@@ -6,6 +6,7 @@ import { IMovies } from "../models/IMovies";
 import { BtnProductContainer } from "./BtnProductContainer";
 import { Cart } from "./Cart";
 import { CartItems } from "./CartItems";
+import { Payment } from "./Payment";
 import { ProductContainer } from "./ProductContainer";
 import { Search } from "./Search";
 import { ShowModal } from "./ShowModal";
@@ -30,6 +31,7 @@ export const ShowProducts = () => {
   const [cart, setCart] = useState<ICart[]>([]);
   const [displayInfo, setDisplayInfo] = useState<boolean>(false);
   const [showCartItems, setShowCartItems] = useState<boolean>(false);
+  const [showPayment, setShowPayment] = useState<boolean>(false);
 
   useEffect(() => {
     axios.get<IMovies[]>(apiUrl).then((response) => {
@@ -79,6 +81,12 @@ export const ShowProducts = () => {
     }
   };
 
+  const toPayment = () => {
+    setMovieContainer(!movieContainer);
+    setShowPayment(!showPayment);
+    setShowCartItems(!showCartItems);
+  };
+
   const showMovies = movie.map((m) => {
     if (movieContainer && m.imageUrl) {
       return (
@@ -119,14 +127,15 @@ export const ShowProducts = () => {
         openCart={openCart}
         addToCart={addToCart}
         removeFromCart={removeFromCart}
+        toPayment={toPayment}
       />
     );
   }
 
-  let html = <></>;
+  let modalHtml = <></>;
 
   if (modal) {
-    html = (
+    modalHtml = (
       <div className="modal-container">
         <div className="modal-box" key={singleMovie.id}>
           <ShowModal
@@ -142,6 +151,12 @@ export const ShowProducts = () => {
     );
   }
 
+  let paymentHtml = <></>;
+
+  if (showPayment) {
+    paymentHtml = <Payment />;
+  }
+
   return (
     <>
       <nav className="navbar-container">
@@ -150,8 +165,9 @@ export const ShowProducts = () => {
         <Cart cart={cart} openCart={openCart} />
       </nav>
       {cartItems}
-      {html}
+      {modalHtml}
       <div className="movie-main-container">{showMovies}</div>
+      {paymentHtml}
     </>
   );
 };
