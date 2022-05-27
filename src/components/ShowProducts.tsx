@@ -1,4 +1,5 @@
 import axios from "axios";
+import { stringify } from "querystring";
 import React, { useEffect, useState } from "react";
 import { ICart } from "../models/ICart";
 import { IMovies } from "../models/IMovies";
@@ -34,6 +35,8 @@ export const ShowProducts = () => {
     axios.get<IMovies[]>(apiUrl).then((response) => {
       setMovie(response.data);
     });
+
+    setCart(JSON.parse(localStorage.getItem("cartlist") || "[]"));
   }, []);
 
   if (!movie) return null;
@@ -47,13 +50,16 @@ export const ShowProducts = () => {
       if (cart[i].id === movie.id) {
         movieExists = true;
         temp[i].amount++;
+        localStorage.setItem("cartlist", JSON.stringify(temp));
       }
     }
 
     if (!movieExists) {
       setCart([...cart, { movie: movie, amount: 1, id: movie.id }]);
+      localStorage.setItem("cartlist", JSON.stringify(cart));
     } else {
       setCart(temp);
+      localStorage.setItem("cartlist", JSON.stringify(temp));
     }
   };
 
@@ -64,9 +70,11 @@ export const ShowProducts = () => {
       if (cart[i].id === m.id && amount > 1) {
         checkCart[i].amount--;
         setCart(checkCart);
+        localStorage.setItem("cartlist", JSON.stringify(checkCart));
       } else if (cart[i].id === m.id && amount === 1) {
         checkCart.splice(i, 1);
         setCart(checkCart);
+        localStorage.setItem("cartlist", JSON.stringify(checkCart));
       }
     }
   };
