@@ -77,15 +77,15 @@ export const CartItems = (props: IMoviesInCart) => {
     <>
       <div className="cart-container">
         <div className="cart-total-container">
-          <div className="cart-total">
-            <button className="close-cart" onClick={getCloseCart}>
-              X
-            </button>{" "}
-            Total items: {totalCartItem} | Total cost: {totalCartCost} :-
-          </div>
+          <button className="close-cart" onClick={getCloseCart}>
+            Close cart
+          </button>
           <button className="to-payment-btn" onClick={goToPayment}>
             To payment
           </button>
+          <div className="cart-total">
+            Total movies: {totalCartItem} | Total cost: {totalCartCost} :-
+          </div>
         </div>
         <div className="cart-list">
           {moviesInCart} {cartEmpty}

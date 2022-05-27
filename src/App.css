@@ -55,13 +55,14 @@
 
 .cart-total {
   width: 100%;
+  padding: 10px;
 }
 
 .close-cart {
   color: white;
-  padding: 5px;
+  padding: 10px;
   background-color: rgb(40, 40, 97);
-  width: 5em;
+  width: 50%;
   border: none;
 }
 
@@ -69,7 +70,7 @@
   cursor: pointer;
 }
 .to-payment-btn {
-  width: 100%;
+  width: 50%;
   border: none;
   background-color: rgb(87, 182, 120);
   color: white;
