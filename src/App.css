@@ -47,7 +47,7 @@
 .cart-list {
   border: 0.5px solid rgb(40, 40, 97);
   min-height: 20%;
-  max-height: 50%;
+  max-height: 80%;
   width: 80vw;
   background-color: white;
   overflow: scroll;
