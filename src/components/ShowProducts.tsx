@@ -154,7 +154,7 @@ export const ShowProducts = () => {
   let paymentHtml = <></>;
 
   if (showPayment) {
-    paymentHtml = <Payment />;
+    paymentHtml = <Payment cart={cart} showPayment={showPayment} />;
   }
 
   return (
