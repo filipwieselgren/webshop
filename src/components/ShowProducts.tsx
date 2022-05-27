@@ -135,6 +135,7 @@ export const ShowProducts = () => {
             setMovieContainer={setMovieContainer}
             movieContainer={movieContainer}
             modal={modal}
+            addToCart={addToCart}
           />
         </div>
       </div>

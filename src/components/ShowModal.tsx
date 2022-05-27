@@ -6,6 +6,7 @@ interface IModal {
   setMovieContainer: React.Dispatch<React.SetStateAction<boolean>>;
   modal: boolean;
   movieContainer: boolean;
+  addToCart(m: IMovies): void;
 }
 
 export const ShowModal = (props: IModal) => {
@@ -13,16 +14,24 @@ export const ShowModal = (props: IModal) => {
     props.setModal(!props.modal);
   };
 
+  const ToCart = () => {
+    props.addToCart(props.singleMovie);
+  };
+
   return (
     <div className="modal-txt">
-      <h3>Film:{props.singleMovie.name}</h3>
+      <h3>Movie:{props.singleMovie.name}</h3>
       <div>{props.singleMovie.description}</div>
       <div>Released: {props.singleMovie.year}</div>
       <div>Price: {props.singleMovie.price} :-</div>
-
-      <button onClick={closeModal} className="btn-global btn-close">
-        Close
-      </button>
+      <div className="modal-btn-container">
+        <button onClick={ToCart} className="btn-buy">
+          Add to cart
+        </button>
+        <button onClick={closeModal} className="btn-global btn-close">
+          Close
+        </button>
+      </div>
     </div>
   );
 };
