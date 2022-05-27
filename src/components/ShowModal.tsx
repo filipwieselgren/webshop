@@ -19,19 +19,19 @@ export const ShowModal = (props: IModal) => {
   };
 
   return (
-    <div className="modal-txt">
-      <h3>Movie:{props.singleMovie.name}</h3>
+    <>
+      <h3>{props.singleMovie.name}</h3>
       <div>{props.singleMovie.description}</div>
       <div>Released: {props.singleMovie.year}</div>
       <div>Price: {props.singleMovie.price} :-</div>
       <div className="modal-btn-container">
-        <button onClick={ToCart} className="btn-buy">
+        <button onClick={ToCart} className="btn-global btn-buy">
           Add to cart
         </button>
         <button onClick={closeModal} className="btn-global btn-close">
           Close
         </button>
       </div>
-    </div>
+    </>
   );
 };
