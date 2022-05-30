@@ -175,6 +175,7 @@
   width: 100%;
   display: flex;
   margin: 0em 0em 2em 0em;
+  justify-content: center;
 }
 
 .categories-btns-container {
