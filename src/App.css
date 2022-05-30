@@ -134,6 +134,37 @@
   width: 50%;
 }
 
+.how-it-works-txt {
+  text-align: center;
+  margin: 1em;
+  font-size: 1.5rem;
+}
+
+.header-imgs-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 2em;
+}
+
+.header-single-img-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.how-it-works-img {
+  width: 3em;
+  margin-bottom: 0.5em;
+}
+
+.arrow-img-container {
+  display: flex;
+  align-items: flex-end;
+}
+
+.arrow {
+  width: 2em;
+}
+
 .modal-container {
   width: 100vw;
   height: 100vh;

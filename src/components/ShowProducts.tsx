@@ -1,11 +1,11 @@
 import axios from "axios";
-import { stringify } from "querystring";
 import React, { useEffect, useState } from "react";
 import { ICart } from "../models/ICart";
 import { IMovies } from "../models/IMovies";
 import { BtnProductContainer } from "./BtnProductContainer";
 import { Cart } from "./Cart";
 import { CartItems } from "./CartItems";
+import { Header } from "./Header";
 import { Payment } from "./Payment";
 import { ProductContainer } from "./ProductContainer";
 import { Search } from "./Search";
@@ -164,6 +164,7 @@ export const ShowProducts = () => {
         <Search />
         <Cart cart={cart} openCart={openCart} />
       </nav>
+      <Header />
       {cartItems}
       {modalHtml}
       <div className="movie-main-container">{showMovies}</div>
