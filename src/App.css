@@ -204,6 +204,10 @@
   color: white;
 }
 
+.categories-btn:hover {
+  cursor: pointer;
+}
+
 .modal-container {
   width: 100vw;
   height: 100vh;
