@@ -170,6 +170,35 @@
   width: 2em;
 }
 
+.categories-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0em 0em 2em 0em;
+}
+
+.categories-btns-container {
+  display: flex;
+  justify-content: space-between;
+  overflow: scroll;
+}
+
+.categories-btn {
+  padding: 0.8em;
+  width: fit-content;
+  min-width: 7em;
+  text-align: center;
+  border: 0.5px solid rgb(84, 175, 145);
+  border-radius: 5px;
+  margin: 0.5em;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.categories-btn:focus {
+  background-color: #54af91;
+  color: white;
+}
+
 .modal-container {
   width: 100vw;
   height: 100vh;
