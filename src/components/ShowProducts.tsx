@@ -165,9 +165,9 @@ export const ShowProducts = () => {
         <Search />
         <Cart cart={cart} openCart={openCart} />
       </nav>
+      {cartItems}
       <Header />
       <CategoriesBtns />
-      {cartItems}
       {modalHtml}
       <div className="movie-main-container">{showMovies}</div>
       {paymentHtml}
