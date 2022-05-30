@@ -2,7 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: rgb(84, 175, 145);
 }
+
+#root {
+  background-color: #171717;
+}
+
 .navbar-container {
   width: 100vw;
   height: 100px;
@@ -31,7 +37,7 @@
 .total-cart-item {
   position: absolute;
   margin: 0px 0px 20px 35px;
-  color: rgb(87, 182, 120);
+  color: rgb(84, 175, 145);
 }
 
 .cart-container {
@@ -78,7 +84,7 @@
 .to-payment-btn {
   width: 50%;
   border: none;
-  background-color: rgb(87, 182, 120);
+  background-color: rgb(84, 175, 145);
   color: white;
   padding: 10px;
 }
@@ -118,7 +124,7 @@
 }
 
 .add {
-  background-color: rgb(87, 182, 120);
+  background-color: rgb(84, 175, 145);
 }
 
 .remove {
@@ -192,7 +198,7 @@
 
 .single-movie-container:hover {
   transform: scale(1.02);
-  border: 1px solid rgb(87, 182, 120);
+  border: 1px solid #54af91;
 }
 .img-container {
   min-height: 16em;
@@ -237,9 +243,9 @@
 }
 
 .btn-buy {
-  border: 0.5px solid rgb(87, 182, 120);
+  border: 0.5px solid rgb(84, 175, 145);
   border-radius: 0px 0px 0px 5px;
-  background-color: rgb(87, 182, 120);
+  background-color: rgb(84, 175, 145);
   color: white;
   width: 50%;
 }
