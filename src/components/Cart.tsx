@@ -1,6 +1,6 @@
 import { ICart } from "../models/ICart";
-import cartEmptyImg from "../cart-empty.png";
-import cartNotEmptyImg from "../cart-not-empty.png";
+import cartEmptyImg from "../images/cart-empty.png";
+import cartNotEmptyImg from "../images/cart-not-empty.png";
 
 interface ICartCount {
   cart: ICart[];
