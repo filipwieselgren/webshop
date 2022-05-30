@@ -6,4 +6,5 @@ export interface IMovies {
   description: string;
   year: number;
   api: string;
+  productCategory: [{ categoryId: number; category: string }];
 }

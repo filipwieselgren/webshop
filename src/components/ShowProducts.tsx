@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { ICart } from "../models/ICart";
+import { ICategories } from "../models/ICategories";
 import { IMovies } from "../models/IMovies";
 import { BtnProductContainer } from "./BtnProductContainer";
 import { Cart } from "./Cart";
@@ -10,10 +11,15 @@ import { Header } from "./Header";
 import { Payment } from "./Payment";
 import { ProductContainer } from "./ProductContainer";
 import { Search } from "./Search";
+import { ShowCategory } from "./showCategory";
+
 import { ShowModal } from "./ShowModal";
 
 const apiUrl =
   "https://medieinstitutet-wie-products.azurewebsites.net/api/products";
+
+const apiCategoriesUrl =
+  "https://medieinstitutet-wie-products.azurewebsites.net/api/categories/";
 
 export const ShowProducts = () => {
   const [movie, setMovie] = useState<IMovies[]>([]);
@@ -27,16 +33,24 @@ export const ShowProducts = () => {
     description: "",
     year: 0,
     api: "",
+    productCategory: [{ categoryId: 0, category: "" }],
   });
 
   const [cart, setCart] = useState<ICart[]>([]);
   const [displayInfo, setDisplayInfo] = useState<boolean>(false);
   const [showCartItems, setShowCartItems] = useState<boolean>(false);
   const [showPayment, setShowPayment] = useState<boolean>(false);
+  const [categories, setCategories] = useState<ICategories[]>([]);
+  const [category, setCategory] = useState<boolean>(false);
+  const [movieCategory, setMovieCategory] = useState<IMovies[]>([]);
 
   useEffect(() => {
     axios.get<IMovies[]>(apiUrl).then((response) => {
       setMovie(response.data);
+    });
+    axios.get<ICategories[]>(apiCategoriesUrl).then((response) => {
+      setCategories(response.data);
+      console.log(categories);
     });
 
     setCart(JSON.parse(localStorage.getItem("cartlist") || "[]"));
@@ -88,17 +102,39 @@ export const ShowProducts = () => {
     setShowCartItems(!showCartItems);
   };
 
+  let categoryHtml = <></>;
+
+  const getCategoryId = (id: number) => {
+    let cID = id;
+
+    movie.map((m) => {
+      m.productCategory.map((pc) => {
+        if (pc.categoryId === cID) {
+          setMovieContainer(false);
+          setCategory(true);
+          if (category) {
+            categoryHtml = (
+              <ShowCategory categorymovie={m} category={category} />
+            );
+          }
+        }
+      });
+    });
+  };
+
   const showMovies = movie.map((m) => {
     if (movieContainer && m.imageUrl) {
       return (
         <div key={m.id} className="single-movie-container">
           <ProductContainer
-            movie={m}
+            showMovies={m}
             setDisplayInfo={setDisplayInfo}
             displayInfo={displayInfo}
             setSingleMovie={setSingleMovie}
             setModal={setModal}
             modal={modal}
+            category={category}
+            // movieCategory={movieCategory}
           />
           <BtnProductContainer
             movie={m}
@@ -158,6 +194,8 @@ export const ShowProducts = () => {
     paymentHtml = <Payment cart={cart} showPayment={showPayment} />;
   }
 
+  // console.log(movie);
+
   return (
     <>
       <nav className="navbar-container">
@@ -167,9 +205,11 @@ export const ShowProducts = () => {
       </nav>
       {cartItems}
       <Header />
-      <CategoriesBtns />
+      <CategoriesBtns getCategoryId={getCategoryId} />
       {modalHtml}
-      <div className="movie-main-container">{showMovies}</div>
+      <div className="movie-main-container">
+        {showMovies} {categoryHtml}
+      </div>
       {paymentHtml}
     </>
   );
