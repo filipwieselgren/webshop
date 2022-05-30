@@ -5,6 +5,7 @@ import { IMovies } from "../models/IMovies";
 import { BtnProductContainer } from "./BtnProductContainer";
 import { Cart } from "./Cart";
 import { CartItems } from "./CartItems";
+import { CategoriesBtns } from "./CategoriesBtns";
 import { Header } from "./Header";
 import { Payment } from "./Payment";
 import { ProductContainer } from "./ProductContainer";
@@ -165,6 +166,7 @@ export const ShowProducts = () => {
         <Cart cart={cart} openCart={openCart} />
       </nav>
       <Header />
+      <CategoriesBtns />
       {cartItems}
       {modalHtml}
       <div className="movie-main-container">{showMovies}</div>
