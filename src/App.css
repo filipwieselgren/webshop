@@ -199,6 +199,11 @@
   color: white;
 }
 
+.categories-btn:active {
+  background-color: #54af91;
+  color: white;
+}
+
 .modal-container {
   width: 100vw;
   height: 100vh;
