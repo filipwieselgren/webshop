@@ -6,10 +6,10 @@ interface ICategory {
 }
 
 export const ShowCategory = (props: ICategory) => {
-  let productHtml = <></>;
+  console.log("Kategori");
 
-  if (props.category) {
-    productHtml = (
+  return (
+    <>
       <div key={props.categorymovie.id} className="img-container">
         <img
           src={props.categorymovie.imageUrl}
@@ -18,8 +18,6 @@ export const ShowCategory = (props: ICategory) => {
           //   onClick={showMovieInfo}
         />
       </div>
-    );
-  }
-
-  return <>{productHtml}</>;
+    </>
+  );
 };

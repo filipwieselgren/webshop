@@ -11,7 +11,7 @@ import { Header } from "./Header";
 import { Payment } from "./Payment";
 import { ProductContainer } from "./ProductContainer";
 import { Search } from "./Search";
-import { ShowCategory } from "./showCategory";
+import { ShowCategory } from "./ShowCategory";
 
 import { ShowModal } from "./ShowModal";
 
@@ -41,13 +41,14 @@ export const ShowProducts = () => {
   const [showCartItems, setShowCartItems] = useState<boolean>(false);
   const [showPayment, setShowPayment] = useState<boolean>(false);
   const [categories, setCategories] = useState<ICategories[]>([]);
-  const [category, setCategory] = useState<boolean>(false);
-  const [movieCategory, setMovieCategory] = useState<IMovies[]>([]);
+  const [loader, setLoader] = useState<boolean>(true);
 
   useEffect(() => {
     axios.get<IMovies[]>(apiUrl).then((response) => {
       setMovie(response.data);
+      setLoader(false);
     });
+
     axios.get<ICategories[]>(apiCategoriesUrl).then((response) => {
       setCategories(response.data);
       console.log(categories);
@@ -102,27 +103,35 @@ export const ShowProducts = () => {
     setShowCartItems(!showCartItems);
   };
 
-  let categoryHtml = <></>;
-
-  const getCategoryId = (id: number) => {
+  const showMovieByCategory = (id: number) => {
     let cID = id;
 
     movie.map((m) => {
       m.productCategory.map((pc) => {
         if (pc.categoryId === cID) {
-          setMovieContainer(false);
-          setCategory(true);
-          if (category) {
-            categoryHtml = (
-              <ShowCategory categorymovie={m} category={category} />
-            );
-          }
+          console.log(`${m.name} | ${pc.categoryId}`);
         }
       });
     });
   };
 
-  const showMovies = movie.map((m) => {
+  let showLoader = <></>;
+  let header = <Header />;
+  let categoriesBtns = (
+    <CategoriesBtns showMovieByCategory={showMovieByCategory} />
+  );
+
+  if (loader) {
+    showLoader = (
+      <div className="loader-container">
+        <div className="loader"> Laddar...</div>
+      </div>
+    );
+    header = <></>;
+    categoriesBtns = <></>;
+  }
+
+  const showAllMovies = movie.map((m) => {
     if (movieContainer && m.imageUrl) {
       return (
         <div key={m.id} className="single-movie-container">
@@ -133,8 +142,6 @@ export const ShowProducts = () => {
             setSingleMovie={setSingleMovie}
             setModal={setModal}
             modal={modal}
-            category={category}
-            // movieCategory={movieCategory}
           />
           <BtnProductContainer
             movie={m}
@@ -194,8 +201,6 @@ export const ShowProducts = () => {
     paymentHtml = <Payment cart={cart} showPayment={showPayment} />;
   }
 
-  // console.log(movie);
-
   return (
     <>
       <nav className="navbar-container">
@@ -203,13 +208,13 @@ export const ShowProducts = () => {
         <Search />
         <Cart cart={cart} openCart={openCart} />
       </nav>
+      {showLoader}
       {cartItems}
-      <Header />
-      <CategoriesBtns getCategoryId={getCategoryId} />
+      {header}
+      {categoriesBtns}
       {modalHtml}
-      <div className="movie-main-container">
-        {showMovies} {categoryHtml}
-      </div>
+      <div className="movie-main-container">{showAllMovies}</div>
+
       {paymentHtml}
     </>
   );

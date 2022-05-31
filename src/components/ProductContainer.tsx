@@ -7,8 +7,6 @@ interface IProducts {
   setSingleMovie: React.Dispatch<React.SetStateAction<IMovies>>;
   modal: boolean;
   displayInfo: boolean;
-  category: boolean;
-  // movieCategory: IMovies;
 }
 
 export const ProductContainer = (props: IProducts) => {

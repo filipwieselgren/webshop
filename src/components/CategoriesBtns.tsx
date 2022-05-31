@@ -1,11 +1,12 @@
 interface ICategoryId {
-  getCategoryId(id: number): void;
+  showMovieByCategory(id: number): void;
 }
 
 export const CategoriesBtns = (props: ICategoryId) => {
   const sendCategoryId = (value: number) => {
-    props.getCategoryId(value);
+    props.showMovieByCategory(value);
   };
+
   return (
     <>
       <div className="categories-container">
