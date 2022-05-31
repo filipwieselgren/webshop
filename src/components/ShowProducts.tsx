@@ -116,7 +116,9 @@ export const ShowProducts = () => {
   };
 
   let showLoader = <></>;
+
   let header = <Header />;
+
   let categoriesBtns = (
     <CategoriesBtns showMovieByCategory={showMovieByCategory} />
   );
@@ -124,7 +126,12 @@ export const ShowProducts = () => {
   if (loader) {
     showLoader = (
       <div className="loader-container">
-        <div className="loader"> Laddar...</div>
+        <div className="loader">
+          <div className="ball"></div>
+          <div className="ball"></div>
+          <div className="ball"></div>
+          <span>Loading...</span>
+        </div>
       </div>
     );
     header = <></>;
