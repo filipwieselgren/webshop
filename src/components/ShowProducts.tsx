@@ -42,6 +42,8 @@ export const ShowProducts = () => {
   const [showPayment, setShowPayment] = useState<boolean>(false);
   const [categories, setCategories] = useState<ICategories[]>([]);
   const [loader, setLoader] = useState<boolean>(true);
+  const [movieAdded, setMovieAdded] = useState<number>(0);
+  const [resetCheck, setResetCheck] = useState<boolean>(false);
 
   useEffect(() => {
     axios.get<IMovies[]>(apiUrl).then((response) => {
@@ -78,6 +80,15 @@ export const ShowProducts = () => {
     } else {
       setCart(temp);
       localStorage.setItem("cartlist", JSON.stringify(temp));
+    }
+  };
+
+  const movieAddedAnimation = (m: IMovies): void => {
+    for (let i = 0; i < movie.length; i++) {
+      if (movie[i].id === m.id) {
+        setMovieAdded(m.id);
+        setResetCheck(true);
+      }
     }
   };
 
@@ -149,6 +160,9 @@ export const ShowProducts = () => {
             setSingleMovie={setSingleMovie}
             setModal={setModal}
             modal={modal}
+            movieAdded={movieAdded}
+            setResetCheck={setResetCheck}
+            resetCheck={resetCheck}
           />
           <BtnProductContainer
             movie={m}
@@ -159,6 +173,7 @@ export const ShowProducts = () => {
             addToCart={addToCart}
             movieContainer={movieContainer}
             modal={modal}
+            movieAddedAnimation={movieAddedAnimation}
           />
         </div>
       );

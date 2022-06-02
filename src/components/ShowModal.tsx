@@ -18,6 +18,8 @@ export const ShowModal = (props: IModal) => {
     props.addToCart(props.singleMovie);
   };
 
+  console.log(props.singleMovie);
+
   return (
     <>
       <h3>{props.singleMovie.name}</h3>

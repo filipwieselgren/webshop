@@ -7,6 +7,7 @@ interface ProductContainer {
   setSingleMovie: React.Dispatch<React.SetStateAction<IMovies>>;
   setMovieContainer: React.Dispatch<React.SetStateAction<boolean>>;
   addToCart(m: IMovies): void;
+  movieAddedAnimation(m: IMovies): void;
   modal: boolean;
   movieContainer: boolean;
 }
@@ -17,14 +18,19 @@ export const BtnProductContainer = (props: ProductContainer) => {
     props.setModal(!props.modal);
   };
 
-  const ToCart = () => {
+  const toCart = () => {
     props.addToCart(props.movie);
+    props.movieAddedAnimation(props.movie);
   };
 
   return (
     <>
       <div className="btn-container">
-        <button onClick={ToCart} className="btn-global btn-buy">
+        <button
+          onClick={toCart}
+          id={props.movie.id.toString()}
+          className="btn-global btn-buy"
+        >
           Add to cart
         </button>
         <button onClick={showMovieInfo} className="btn-global btn-info">

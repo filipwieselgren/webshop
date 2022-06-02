@@ -8,6 +8,24 @@
   background-color: #171717;
 }
 
+.addedMovieContainer {
+  background-color: #171717c9;
+  position: absolute;
+  min-height: 16em;
+  width: 10em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px 5px 0px 0px;
+  border: 1px solid rgb(84, 175, 145);
+}
+
+.addMovieTxt {
+  color: #54af91;
+  text-align: center;
+  width: 100%;
+}
+
 .navbar-container {
   width: 100vw;
   height: 100px;
