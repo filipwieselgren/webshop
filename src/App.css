@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: rgb(84, 175, 145);
 }
 
 #root {
@@ -51,18 +50,20 @@
 }
 
 .cart-list {
-  border: 0.5px solid rgb(40, 40, 97);
   min-height: 20%;
   max-height: 70%;
   width: 80vw;
   background-color: white;
   overflow: scroll;
+  margin: 0em 1.5em;
+  border-radius: 0px 0px 5px 5px;
 }
 
 .cart-total-container {
   background-color: white;
   width: 80vw;
-  border: 0.5px solid rgb(40, 40, 97);
+  margin: 0em 1.5em;
+  border-radius: 5px 5px 0px 0px;
 }
 
 .cart-total {
@@ -76,6 +77,7 @@
   background-color: rgb(40, 40, 97);
   width: 50%;
   border: none;
+  border-radius: 5px 0px 0px 0px;
 }
 
 .close-cart:hover {
@@ -87,6 +89,7 @@
   background-color: rgb(84, 175, 145);
   color: white;
   padding: 10px;
+  border-radius: 0px 5px 0px 0px;
 }
 
 .to-payment-btn:hover {
@@ -96,12 +99,13 @@
 .cart-items {
   border-bottom: 1px solid #333;
   min-height: 50%;
-  background-color: rgb(255, 255, 255);
+  background-color: white;
   width: 100%;
 }
 
 .cart-info-container {
   padding: 10px;
+  color: #171717;
 }
 
 .cart-img-container {
@@ -192,6 +196,7 @@
   border-radius: 5px;
   margin: 0.5em;
   background-color: rgba(255, 255, 255, 0);
+  color: white;
 }
 
 .categories-btn:focus {
@@ -254,7 +259,7 @@
 }
 
 .movie-main-container {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

@@ -7,7 +7,9 @@ export const Header = () => {
   return (
     <>
       <header className="header-container">
-        <div className="how-it-works-txt">How it works</div>
+        <div className="how-it-works-txt">
+          Stream movies directly to your computar
+        </div>
         <div className="header-imgs-container">
           <div className="header-single-img-container">
             <img
