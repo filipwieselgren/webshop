@@ -23,6 +23,7 @@ const apiCategoriesUrl =
 
 export const ShowProducts = () => {
   const [movie, setMovie] = useState<IMovies[]>([]);
+  const [filteredMovies, setFilteredMovies] = useState<IMovies[]>([]);
   const [modal, setModal] = useState<boolean>(false);
   const [movieContainer, setMovieContainer] = useState<boolean>(true);
   const [singleMovie, setSingleMovie] = useState<IMovies>({
@@ -48,6 +49,7 @@ export const ShowProducts = () => {
   useEffect(() => {
     axios.get<IMovies[]>(apiUrl).then((response) => {
       setMovie(response.data);
+      setFilteredMovies(response.data);
       setLoader(false);
     });
 
@@ -114,16 +116,23 @@ export const ShowProducts = () => {
     setShowCartItems(!showCartItems);
   };
 
-  const showMovieByCategory = (id: number) => {
-    let cID = id;
+  const showAllMoviesF = () => {
+    setFilteredMovies(movie);
+  };
 
-    movie.map((m) => {
-      m.productCategory.map((pc) => {
-        if (pc.categoryId === cID) {
-          console.log(`${m.name} | ${pc.categoryId}`);
+  const showMovieByCategory = (id: number) => {
+    let filteredMovies: IMovies[] = [];
+    for (let j = 0; j < movie.length; j++) {
+      for (let i = 0; i < movie[j].productCategory.length; i++) {
+        if (movie[j].productCategory[i].categoryId === id) {
+          filteredMovies.push(movie[j]);
         }
-      });
-    });
+      }
+    }
+
+    if (filteredMovies) {
+      setFilteredMovies(filteredMovies);
+    }
   };
 
   let showLoader = <></>;
@@ -131,7 +140,10 @@ export const ShowProducts = () => {
   let header = <Header />;
 
   let categoriesBtns = (
-    <CategoriesBtns showMovieByCategory={showMovieByCategory} />
+    <CategoriesBtns
+      showMovieByCategory={showMovieByCategory}
+      showAllMoviesF={showAllMoviesF}
+    />
   );
 
   if (loader) {
@@ -149,7 +161,7 @@ export const ShowProducts = () => {
     categoriesBtns = <></>;
   }
 
-  const showAllMovies = movie.map((m) => {
+  const showAllMovies = filteredMovies.map((m) => {
     if (movieContainer && m.imageUrl) {
       return (
         <div key={m.id} className="single-movie-container">

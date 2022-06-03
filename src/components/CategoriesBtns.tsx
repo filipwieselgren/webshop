@@ -1,5 +1,6 @@
 interface ICategoryId {
   showMovieByCategory(id: number): void;
+  showAllMoviesF(): void;
 }
 
 export const CategoriesBtns = (props: ICategoryId) => {
@@ -7,11 +8,21 @@ export const CategoriesBtns = (props: ICategoryId) => {
     props.showMovieByCategory(value);
   };
 
+  const sendAllCategory = () => {
+    props.showAllMoviesF();
+  };
   return (
     <>
       <div className="categories-container">
         <div className="categories-btns-container">
-          <button className="categories-btn">All movies</button>
+          <button
+            className="categories-btn"
+            onClick={() => {
+              sendAllCategory();
+            }}
+          >
+            All movies
+          </button>
           <button
             className="categories-btn"
             onClick={() => {
@@ -23,7 +34,7 @@ export const CategoriesBtns = (props: ICategoryId) => {
           <button
             className="categories-btn"
             onClick={() => {
-              sendCategoryId(6);
+              sendCategoryId(7);
             }}
           >
             Comedy
@@ -31,7 +42,7 @@ export const CategoriesBtns = (props: ICategoryId) => {
           <button
             className="categories-btn"
             onClick={() => {
-              sendCategoryId(7);
+              sendCategoryId(8);
             }}
           >
             Sci Fi
@@ -39,7 +50,7 @@ export const CategoriesBtns = (props: ICategoryId) => {
           <button
             className="categories-btn"
             onClick={() => {
-              sendCategoryId(8);
+              sendCategoryId(6);
             }}
           >
             Thriller
