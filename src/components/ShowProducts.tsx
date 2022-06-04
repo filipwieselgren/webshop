@@ -46,6 +46,16 @@ export const ShowProducts = () => {
   const [movieAdded, setMovieAdded] = useState<number>(0);
   const [resetCheck, setResetCheck] = useState<boolean>(false);
 
+  let showLoader = <></>;
+
+  let header = <Header />;
+
+  let cartItems = <></>;
+
+  let modalHtml = <></>;
+
+  let paymentHtml = <></>;
+
   useEffect(() => {
     axios.get<IMovies[]>(apiUrl).then((response) => {
       setMovie(response.data);
@@ -135,10 +145,6 @@ export const ShowProducts = () => {
     }
   };
 
-  let showLoader = <></>;
-
-  let header = <Header />;
-
   let categoriesBtns = (
     <CategoriesBtns
       showMovieByCategory={showMovieByCategory}
@@ -194,8 +200,6 @@ export const ShowProducts = () => {
     }
   });
 
-  let cartItems = <></>;
-
   const openCart = () => setShowCartItems(!showCartItems);
 
   if (showCartItems) {
@@ -209,8 +213,6 @@ export const ShowProducts = () => {
       />
     );
   }
-
-  let modalHtml = <></>;
 
   if (modal) {
     modalHtml = (
@@ -228,8 +230,6 @@ export const ShowProducts = () => {
       </div>
     );
   }
-
-  let paymentHtml = <></>;
 
   if (showPayment) {
     paymentHtml = <Payment cart={cart} showPayment={showPayment} />;
