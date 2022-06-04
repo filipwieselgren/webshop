@@ -145,27 +145,14 @@ export const ShowProducts = () => {
     }
   };
 
+  const openCart = () => setShowCartItems(!showCartItems);
+
   let categoriesBtns = (
     <CategoriesBtns
       showMovieByCategory={showMovieByCategory}
       showAllMoviesF={showAllMoviesF}
     />
   );
-
-  if (loader) {
-    showLoader = (
-      <div className="loader-container">
-        <div className="loader">
-          <div className="ball"></div>
-          <div className="ball"></div>
-          <div className="ball"></div>
-          <span>Loading...</span>
-        </div>
-      </div>
-    );
-    header = <></>;
-    categoriesBtns = <></>;
-  }
 
   const showAllMovies = filteredMovies.map((m) => {
     if (movieContainer && m.imageUrl) {
@@ -200,7 +187,20 @@ export const ShowProducts = () => {
     }
   });
 
-  const openCart = () => setShowCartItems(!showCartItems);
+  if (loader) {
+    showLoader = (
+      <div className="loader-container">
+        <div className="loader">
+          <div className="ball"></div>
+          <div className="ball"></div>
+          <div className="ball"></div>
+          <span>Loading...</span>
+        </div>
+      </div>
+    );
+    header = <></>;
+    categoriesBtns = <></>;
+  }
 
   if (showCartItems) {
     cartItems = (
