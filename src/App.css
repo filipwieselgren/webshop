@@ -36,6 +36,7 @@
 
 .logo {
   margin-left: 5em;
+  color: white;
 }
 .cart {
   margin-right: 2em;
@@ -166,6 +167,7 @@
   text-align: center;
   margin: 1em 1em 0em 1em;
   font-size: 1.5rem;
+  color: rgb(84, 175, 145);
 }
 .header-imgs-container {
   display: flex;

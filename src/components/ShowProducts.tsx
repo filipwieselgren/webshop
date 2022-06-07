@@ -11,7 +11,6 @@ import { Header } from "./Header";
 import { Payment } from "./Payment";
 import { ProductContainer } from "./ProductContainer";
 import { Search } from "./Search";
-import { ShowCategory } from "./ShowCategory";
 
 import { ShowModal } from "./ShowModal";
 
@@ -22,7 +21,7 @@ const apiCategoriesUrl =
   "https://medieinstitutet-wie-products.azurewebsites.net/api/categories/";
 
 export const ShowProducts = () => {
-  const [movie, setMovie] = useState<IMovies[]>([]);
+  const [movies, setMovies] = useState<IMovies[]>([]);
   const [filteredMovies, setFilteredMovies] = useState<IMovies[]>([]);
   const [modal, setModal] = useState<boolean>(false);
   const [movieContainer, setMovieContainer] = useState<boolean>(true);
@@ -58,7 +57,7 @@ export const ShowProducts = () => {
 
   useEffect(() => {
     axios.get<IMovies[]>(apiUrl).then((response) => {
-      setMovie(response.data);
+      setMovies(response.data);
       setFilteredMovies(response.data);
       setLoader(false);
     });
@@ -71,7 +70,7 @@ export const ShowProducts = () => {
     setCart(JSON.parse(localStorage.getItem("cartlist") || "[]"));
   }, []);
 
-  if (!movie) return null;
+  if (!movies) return null;
 
   const addToCart = (movie: IMovies): void => {
     let movieExists = false;
@@ -96,8 +95,8 @@ export const ShowProducts = () => {
   };
 
   const movieAddedAnimation = (m: IMovies): void => {
-    for (let i = 0; i < movie.length; i++) {
-      if (movie[i].id === m.id) {
+    for (let i = 0; i < movies.length; i++) {
+      if (movies[i].id === m.id) {
         setMovieAdded(m.id);
         setResetCheck(true);
       }
@@ -127,15 +126,15 @@ export const ShowProducts = () => {
   };
 
   const showAllMoviesF = () => {
-    setFilteredMovies(movie);
+    setFilteredMovies(movies);
   };
 
   const showMovieByCategory = (id: number) => {
     let filteredMovies: IMovies[] = [];
-    for (let j = 0; j < movie.length; j++) {
-      for (let i = 0; i < movie[j].productCategory.length; i++) {
-        if (movie[j].productCategory[i].categoryId === id) {
-          filteredMovies.push(movie[j]);
+    for (let j = 0; j < movies.length; j++) {
+      for (let i = 0; i < movies[j].productCategory.length; i++) {
+        if (movies[j].productCategory[i].categoryId === id) {
+          filteredMovies.push(movies[j]);
         }
       }
     }
@@ -172,7 +171,7 @@ export const ShowProducts = () => {
           <BtnProductContainer
             movie={m}
             setModal={setModal}
-            setMovie={setMovie}
+            setMovie={setMovies}
             setSingleMovie={setSingleMovie}
             setMovieContainer={setMovieContainer}
             addToCart={addToCart}
