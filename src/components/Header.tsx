@@ -7,7 +7,7 @@ export const Header = () => {
   return (
     <>
       <header className="header-container">
-        <div className="how-it-works-txt">
+        <div className="how-it-works-txt heder-color">
           Stream movies directly to your computar
         </div>
         <div className="header-imgs-container">
@@ -17,21 +17,21 @@ export const Header = () => {
               src={addToCartImg}
               alt="Add to cart img"
             />
-            <div>Add to cart</div>
+            <div className="heder-color">Add to cart</div>
           </div>
           <div className="arrow-img-container">
             <img className="arrow" src={arrowImg} alt="Arrow img" />
           </div>
           <div className="header-single-img-container">
             <img className="how-it-works-img" src={payImg} alt="Card img" />
-            <div>Pay</div>
+            <div className="heder-color">Pay</div>
           </div>
           <div className="arrow-img-container">
             <img className="arrow" src={arrowImg} alt="Arrow img" />
           </div>
           <div className="header-single-img-container">
             <img className="how-it-works-img" src={enjoyImg} alt="Play img" />
-            <div>Enjoy</div>
+            <div className="heder-color">Stream</div>
           </div>
         </div>
       </header>

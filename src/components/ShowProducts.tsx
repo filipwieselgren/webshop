@@ -11,7 +11,7 @@ import { Header } from "./Header";
 import { Payment } from "./Payment";
 import { ProductContainer } from "./ProductContainer";
 import { Search } from "./Search";
-
+import logo from "../images/logo.png";
 import { ShowModal } from "./ShowModal";
 
 const apiUrl =
@@ -73,24 +73,33 @@ export const ShowProducts = () => {
   if (!movies) return null;
 
   const addToCart = (movie: IMovies): void => {
+    console.log("movie:", movie);
+
+    console.log(1);
+
     let movieExists = false;
 
     let temp = [...cart];
 
     for (let i = 0; i < cart.length; i++) {
+      console.log(2);
       if (cart[i].id === movie.id) {
         movieExists = true;
         temp[i].amount++;
         localStorage.setItem("cartlist", JSON.stringify(temp));
+        console.log(3);
       }
     }
 
     if (!movieExists) {
       setCart([...cart, { movie: movie, amount: 1, id: movie.id }]);
-      localStorage.setItem("cartlist", JSON.stringify(cart));
+
+      // localStorage.setItem("cartlist", JSON.stringify(cart));
+      console.log(4);
     } else {
       setCart(temp);
       localStorage.setItem("cartlist", JSON.stringify(temp));
+      console.log(5);
     }
   };
 
@@ -234,11 +243,14 @@ export const ShowProducts = () => {
     paymentHtml = <Payment cart={cart} showPayment={showPayment} />;
   }
 
+  if (cart.length > 0) {
+    localStorage.setItem("cartlist", JSON.stringify(cart));
+  }
+
   return (
     <>
       <nav className="navbar-container">
-        <div className="logo">Logo</div>
-        <Search />
+        <img src={logo} className="logo" alt="Logo" />
         <Cart cart={cart} openCart={openCart} />
       </nav>
       {showLoader}

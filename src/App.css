@@ -35,8 +35,9 @@
 }
 
 .logo {
-  margin-left: 5em;
+  margin-left: 2em;
   color: white;
+  width: 10em;
 }
 .cart {
   margin-right: 2em;
@@ -49,12 +50,12 @@
 }
 
 .cartimg-nav {
-  width: 5em;
+  width: 4em;
 }
 
 .total-cart-item {
   position: absolute;
-  margin: 0px 0px 20px 35px;
+  margin: 0px 0px 18px 30px;
   color: rgb(84, 175, 145);
 }
 
@@ -167,6 +168,9 @@
   text-align: center;
   margin: 1em 1em 0em 1em;
   font-size: 1.5rem;
+}
+
+.heder-color {
   color: rgb(84, 175, 145);
 }
 .header-imgs-container {
