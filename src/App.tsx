@@ -1,11 +1,16 @@
 import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ShowModal } from "./components/ShowModal";
 import { ShowProducts } from "./components/ShowProducts";
 
 function App() {
   return (
     <>
-      <ShowProducts />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<ShowProducts />}></Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
