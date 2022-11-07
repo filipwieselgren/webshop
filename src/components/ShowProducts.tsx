@@ -13,6 +13,7 @@ import { ProductContainer } from "./ProductContainer";
 import { Search } from "./Search";
 import logo from "../images/logo.png";
 import { ShowModal } from "./ShowModal";
+import { useNavigate } from "react-router-dom";
 
 const apiUrl =
   "https://medieinstitutet-wie-products.azurewebsites.net/api/products";
@@ -44,6 +45,7 @@ export const ShowProducts = () => {
   const [loader, setLoader] = useState<boolean>(true);
   const [movieAdded, setMovieAdded] = useState<number>(0);
   const [resetCheck, setResetCheck] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   let showLoader = <></>;
 
@@ -103,15 +105,6 @@ export const ShowProducts = () => {
     }
   };
 
-  const movieAddedAnimation = (m: IMovies): void => {
-    for (let i = 0; i < movies.length; i++) {
-      if (movies[i].id === m.id) {
-        setMovieAdded(m.id);
-        setResetCheck(true);
-      }
-    }
-  };
-
   const removeFromCart = (m: IMovies, amount: number): void => {
     let checkCart = [...cart];
 
@@ -124,6 +117,15 @@ export const ShowProducts = () => {
         checkCart.splice(i, 1);
         setCart(checkCart);
         localStorage.setItem("cartlist", JSON.stringify(checkCart));
+      }
+    }
+  };
+
+  const movieAddedAnimation = (m: IMovies): void => {
+    for (let i = 0; i < movies.length; i++) {
+      if (movies[i].id === m.id) {
+        setMovieAdded(m.id);
+        setResetCheck(true);
       }
     }
   };
@@ -239,20 +241,24 @@ export const ShowProducts = () => {
     );
   }
 
-  if (showPayment) {
-    paymentHtml = <Payment cart={cart} showPayment={showPayment} />;
-  }
-
   if (cart.length > 0) {
     localStorage.setItem("cartlist", JSON.stringify(cart));
   }
 
+  <Payment cart={[]} showPayment={false} />;
+
   return (
     <>
       <nav className="navbar-container">
-        <img src={logo} className="logo" alt="Logo" />
+        <img
+          src={logo}
+          className="logo"
+          alt="Logo"
+          onClick={() => navigate("/")}
+        />
         <Cart cart={cart} openCart={openCart} />
       </nav>
+
       {showLoader}
       {cartItems}
       {header}

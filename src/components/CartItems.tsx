@@ -1,3 +1,4 @@
+import { useLocation, useNavigate } from "react-router-dom";
 import { ICart } from "../models/ICart";
 import { IMovies } from "../models/IMovies";
 
@@ -18,9 +19,7 @@ export const CartItems = (props: IMoviesInCart) => {
     props.removeFromCart(m, amount);
   };
 
-  const goToPayment = () => {
-    props.toPayment();
-  };
+  const navigate = useNavigate();
 
   const totalCartCost = props.cart.reduce((acc, cur) => {
     return acc + cur.amount * cur.movie.price;
@@ -80,7 +79,10 @@ export const CartItems = (props: IMoviesInCart) => {
           <button className="close-cart" onClick={getCloseCart}>
             Close cart
           </button>
-          <button className="to-payment-btn" onClick={goToPayment}>
+          <button
+            className="to-payment-btn"
+            onClick={() => navigate("/payment")}
+          >
             To payment
           </button>
           <div className="cart-total">
