@@ -620,6 +620,15 @@
   }
   .payment-main-wrapper {
     border: 1px solid #54af91;
+    display: flex;
+  }
+
+  .payment-movie-wrapper {
+    flex-direction: column;
+    width: 50%;
+  }
+  .payment-wrapper {
+    width: 50%;
   }
 }
 
