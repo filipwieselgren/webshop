@@ -618,9 +618,15 @@
     margin: 1em 2em 2em 2em;
     width: 60%;
   }
+
+  .payment-body-wrapper {
+    display: flex;
+    justify-content: center;
+  }
   .payment-main-wrapper {
     border: 1px solid #54af91;
     display: flex;
+    width: 90vw;
   }
 
   .payment-movie-wrapper {
