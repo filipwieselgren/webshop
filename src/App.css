@@ -596,7 +596,7 @@
 }
 
 .goBack-btn {
-  margin-right: 20px;
+  margin: 20px;
   padding: 10px 15px;
   font-size: 1rem;
   background-color: #171717;
@@ -624,7 +624,6 @@
     justify-content: center;
   }
   .payment-main-wrapper {
-    border: 1px solid #54af91;
     display: flex;
     width: 90vw;
   }
@@ -636,6 +635,7 @@
   }
   .payment-wrapper {
     width: 50%;
+    align-items: center;
   }
 
   .costNItem-wrapper {
@@ -644,6 +644,20 @@
 
   .btns-wrapper {
     width: 33%;
+  }
+
+  .payment-title {
+    width: 80%;
+  }
+
+  .payform {
+    align-items: center;
+    width: 70%;
+  }
+
+  .payment-movie-wrapper {
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
 }
 
