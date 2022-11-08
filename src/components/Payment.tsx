@@ -81,18 +81,21 @@ export const Payment = (props: PaymentItems) => {
       </nav>
       <div className="payment-body-wrapper">
         <div className="payment-main-wrapper">
-          <div className="totalcost-wrapper">
-            <div className="cost-txt">Total cost</div>
-            <div className="totalcost">{totalCartCost} :-</div>
-          </div>
-          <div className="payment-movie-wrapper">
-            {
-              <PaymentItems
-                cartItems={cartItems}
-                addToCart={addToCart}
-                removeFromCart={removeFromCart}
-              />
-            }
+          <div className="costNItem-wrapper">
+            <div className="totalcost-wrapper">
+              <div className="cost-txt">Total cost</div>
+              <div className="totalcost">{totalCartCost} :-</div>
+            </div>
+
+            <div className="payment-movie-wrapper">
+              {
+                <PaymentItems
+                  cartItems={cartItems}
+                  addToCart={addToCart}
+                  removeFromCart={removeFromCart}
+                />
+              }
+            </div>
           </div>
 
           <PaySection />
