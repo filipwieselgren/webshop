@@ -351,17 +351,16 @@
   transform: scale(1.02);
   border: 1px solid #54af91;
 }
-.img-container {
-  min-height: 16em;
-}
 
 .img-container:hover {
   cursor: pointer;
 }
 
 .img-frontpage {
+  border-radius: 5px 5px 0 0;
   width: 100%;
-  border-radius: 5px 5px 0px 0px;
+  height: 200px;
+  object-fit: cover;
 }
 
 .info-container {
@@ -480,6 +479,7 @@
   width: 150px;
   height: 200px;
   object-fit: cover;
+  border-radius: 5px;
 }
 .btns-wrapper {
   display: flex;

@@ -7,7 +7,12 @@ const PaySection = () => {
         </h4>
         <form className="payform">
           <label htmlFor="form-email">Email</label>
-          <input type="email" id="form-email" className="emailInput payInput" />
+          <input
+            type="email"
+            id="form-email"
+            className="emailInput payInput"
+            required
+          />
           <label htmlFor="card-details">Card Details</label>
           <div className="card-details-wrapper">
             <input
@@ -15,21 +20,29 @@ const PaySection = () => {
               className="payInput cardNumber"
               id="card-details"
               placeholder="123 123 123 123"
+              required
             />
             <input
               type="number"
               className="payInput cardMY"
               placeholder="MM/YY"
+              required
             />
             <input
               type="number"
               className="payInput cvcNumber"
               placeholder="CVC"
+              required
             />
           </div>
 
           <label htmlFor="cardName">Name on card</label>
-          <input type="text" className="nameInput payInput" id="cardName" />
+          <input
+            type="text"
+            className="nameInput payInput"
+            id="cardName"
+            required
+          />
 
           <button type="submit" className="payBtn">
             Pay
