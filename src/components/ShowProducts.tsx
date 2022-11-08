@@ -10,7 +10,6 @@ import { CategoriesBtns } from "./CategoriesBtns";
 import { Header } from "./Header";
 import { Payment } from "./Payment";
 import { ProductContainer } from "./ProductContainer";
-import { Search } from "./Search";
 import logo from "../images/logo.png";
 import { ShowModal } from "./ShowModal";
 import { useNavigate } from "react-router-dom";

@@ -414,7 +414,7 @@
 }
 
 .payment-body-wrapper {
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 .totalcost-wrapper {
@@ -436,6 +436,15 @@
   display: flex;
   color: white;
   overflow: scroll;
+  min-height: 40vh;
+}
+
+.empty-cart {
+  width: 100%;
+  text-align: center;
+  padding: 50px;
+  color: #54af91;
+  font-size: 1.5rem;
 }
 
 .movie-wrapper {
@@ -489,6 +498,115 @@
   font-weight: 300;
 }
 
+.payment-wrapper {
+  background-color: #54af91;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.payment-title {
+  color: white;
+  font-weight: 200;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.payform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.payform input {
+  background-color: #171717;
+  color: white;
+  padding: 10px;
+  box-shadow: 1px 2px 5px #17171789;
+}
+
+.payform label {
+  margin: 10px 0 2px 15px;
+  width: 100%;
+}
+
+.payform input::placeholder {
+  color: white;
+}
+
+.card-details-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cardNumber {
+  width: 100%;
+}
+
+.cardMY,
+.cvcNumber {
+  width: 50%;
+}
+
+.emailInput,
+.nameInput {
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+}
+
+.nameInput {
+  margin-bottom: 40px;
+}
+
+.cardNumber {
+  border-radius: 5px 5px 0 0;
+  border-bottom: 0.5px solid white;
+  border-right: none;
+  border-top: none;
+  border-left: none;
+}
+
+.cardMY {
+  border-radius: 0 0 0 5px;
+  border-right: 0.25px solid white;
+  border-bottom: none;
+  border-top: none;
+  border-left: none;
+}
+.cvcNumber {
+  border-radius: 0 0 5px 0;
+  border-left: 0.25px solid white;
+  border-bottom: none;
+  border-top: none;
+  border-right: none;
+}
+
+.payBtn {
+  width: 50%;
+  padding: 15px 20px;
+  font-size: 1rem;
+  background-color: #171717;
+  color: #54af91;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 2px 5px #17171789;
+}
+
+.goBack-btn {
+  margin-right: 20px;
+  padding: 10px 15px;
+  font-size: 1rem;
+  background-color: #171717;
+  color: #54af91;
+  border: 1px solid #54af91;
+  border-radius: 5px;
+  box-shadow: 1px 2px 5px #171717;
+}
+
 @media only screen and (min-width: 768px) {
   .cart-list,
   .cart-total-container {
@@ -500,6 +618,9 @@
     justify-content: space-between;
     margin: 1em 2em 2em 2em;
     width: 60%;
+  }
+  .payment-main-wrapper {
+    border: 1px solid #54af91;
   }
 }
 
