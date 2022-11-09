@@ -8,15 +8,19 @@
   background-color: #171717;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .addedMovieContainer {
   background-color: #171717c9;
   position: absolute;
-  min-height: 16em;
+  height: 100%;
   width: 10em;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 5px 5px 0px 0px;
+  border-radius: 5px;
   border: 1px solid rgb(84, 175, 145);
 }
 
@@ -251,26 +255,86 @@
   transform: translate(0%, -50%);
 }
 
+.title-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 70px;
+  margin-bottom: 20px;
+}
+
+.title-wrapper h3 {
+  font-size: 1.5rem;
+  color: #54af91;
+  font-weight: 300;
+}
+
+.added-modal {
+  width: 100%;
+  font-size: 2rem;
+  font-weight: 100;
+  color: #54af91;
+  margin-left: 40px;
+  margin-top: 60px;
+}
+
+.description {
+  padding: 2em 5em;
+  font-size: 1.1rem;
+  font-weight: 200;
+}
+
+.modal-bottomInfo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 5em;
+  font-size: 1rem;
+  color: #54af91;
+  font-weight: 300;
+}
+
+.price {
+  margin-top: 10px;
+}
+
+.released {
+  color: #54af91;
+  font-weight: 300;
+}
+
 .modal-box {
-  border: 0.5px solid rgb(87, 182, 120);
+  box-shadow: 2px 2px 20px black;
   border-radius: 6px;
-  width: 80vw;
-  background-color: rgba(40, 40, 97, 0.32);
+  width: 60vw;
+  background-color: rgb(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   gap: 1.5em;
   color: white;
-  padding: 10px;
 }
 
 .modal-btn-container {
   display: flex;
-  width: 100%;
+  width: 80%;
+  justify-content: space-between;
+  padding: 2em 0;
 }
 
-.btn-close {
+.modal-btn-container > button {
+  border-radius: 5px;
+  width: 45%;
+}
+
+#close-modal {
+  border-radius: 5px;
+}
+
+.modal-btn-container .btn-close {
   width: 50%;
   background-color: rgb(40, 40, 97);
   color: white;
@@ -404,6 +468,7 @@
   border-radius: 0px 0px 5px 0px;
   background-color: rgb(40, 40, 97);
   color: white;
+  z-index: 1;
 }
 
 .btn-global:hover {
