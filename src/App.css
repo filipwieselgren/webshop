@@ -42,6 +42,7 @@ button:hover {
   margin-left: 2em;
   color: white;
   width: 10em;
+  cursor: pointer;
 }
 .cart {
   margin-right: 2em;
