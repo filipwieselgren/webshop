@@ -1,4 +1,14 @@
+import { useState } from "react";
+import { IPayment } from "../models/IPayment";
+
 const PaySection = () => {
+  const [details, setDetails] = useState<IPayment>({
+    email: "",
+    cardNumber: 0,
+    monthYear: 0,
+    cvc: 0,
+    name: "",
+  });
   return (
     <>
       <div className="payment-wrapper">
