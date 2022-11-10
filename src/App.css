@@ -351,6 +351,7 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 150px;
 }
 
 .loader-container {
@@ -677,6 +678,100 @@ button:hover {
 
 .costNItem-wrapper {
   min-height: 70vh;
+}
+
+.footer-wrapper {
+  width: 100vw;
+  background-color: #171717;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.content-footer-wrapper,
+.rights-wrapper {
+  width: 80vw;
+  display: flex;
+}
+
+.rights-wrapper {
+  justify-content: center;
+  padding-top: 25px;
+  padding-bottom: 50px;
+}
+
+.rights {
+  color: white;
+  font-size: 1rem;
+  font-weight: 100;
+}
+
+.content-footer-wrapper {
+  border-bottom: 0.5px solid white;
+  padding-bottom: 25px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.content-footer {
+  display: flex;
+  align-items: center;
+}
+
+.logo-footer-wrapper {
+  margin: 0 10px 0 0;
+}
+
+.footer-logo {
+  width: 7em;
+}
+
+.some-wrapper {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translate(-50%, 10%);
+}
+
+.some-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 0.5px solid white;
+  position: relative;
+  margin: 0 10px 0 10px;
+}
+
+.footer-icon {
+  font-size: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #54af91;
+}
+
+.footer-ul {
+  display: flex;
+}
+
+.footer-ul a:nth-child(n + 2) {
+  text-decoration: none;
+  margin: 0 10px 0 10px;
+}
+
+.footer-ul a:first-child {
+  text-decoration: none;
+  margin: 0 10px 0 0;
+}
+
+.footer-ul a {
+  color: #54af91;
+}
+
+.footer-ul a li {
+  list-style: none;
 }
 
 @media only screen and (min-width: 768px) {

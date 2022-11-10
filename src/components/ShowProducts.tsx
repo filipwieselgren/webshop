@@ -13,6 +13,7 @@ import { ProductContainer } from "./ProductContainer";
 import logo from "../images/logo.png";
 import { ShowModal } from "./ShowModal";
 import { useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 
 const apiUrl =
   "https://medieinstitutet-wie-products.azurewebsites.net/api/products";
@@ -266,6 +267,7 @@ export const ShowProducts = () => {
       <div className="movie-main-container">{showAllMovies}</div>
 
       {paymentHtml}
+      <Footer />
     </>
   );
 };

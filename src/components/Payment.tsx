@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { IMovies } from "../models/IMovies";
 import PaymentItems from "./PaymentItems";
 import PaySection from "./PaySection";
+import Footer from "./Footer";
 
 interface PaymentItems {
   cart: ICart[];
@@ -17,9 +18,11 @@ export const Payment = (props: PaymentItems) => {
   const [cartItems, setCartItems] = useState<ICart[]>([]);
 
   useEffect(() => {
-    const items = JSON.parse(localStorage.getItem("cartlist") || "");
+    const items = JSON.parse(localStorage.getItem("cartlist") || "[]");
     if (items !== "") {
       setCartItems(items);
+    } else {
+      setCartItems([]);
     }
   }, []);
 
@@ -101,6 +104,7 @@ export const Payment = (props: PaymentItems) => {
           <PaySection />
         </div>
       </div>
+      <Footer />
     </>
   );
 };
