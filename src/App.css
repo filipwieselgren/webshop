@@ -809,6 +809,10 @@ button:hover {
     min-height: 30vh;
   }
 
+  .payment-main-wrapper {
+    align-items: center;
+  }
+
   .footer-ul a:nth-child(n + 2) {
     text-decoration: none;
     margin: 0 10px 0 10px;
