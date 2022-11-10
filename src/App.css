@@ -718,10 +718,6 @@ button:hover {
   align-items: flex-end;
 }
 
-.logo-footer-wrapper {
-  margin: 0 10px 0 0;
-}
-
 .footer-logo {
   width: 7em;
   cursor: pointer;
@@ -740,6 +736,7 @@ button:hover {
   position: relative;
   margin: 10px 0 10px 0;
   cursor: pointer;
+  margin: 10px 0 0px 0;
 }
 
 .footer-icon {
@@ -837,6 +834,10 @@ button:hover {
 
   .footer-ul {
     flex-direction: row;
+  }
+
+  .some-circle {
+    margin: 10px 0 10px 0;
   }
 }
 
