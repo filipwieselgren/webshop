@@ -715,7 +715,7 @@ button:hover {
 
 .content-footer {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .logo-footer-wrapper {
@@ -729,10 +729,7 @@ button:hover {
 
 .some-wrapper {
   display: flex;
-  position: absolute;
-  left: 50%;
-  top: 10%;
-  transform: translate(-50%, 10%);
+  flex-direction: column;
 }
 
 .some-circle {
@@ -741,7 +738,7 @@ button:hover {
   border-radius: 50%;
   border: 0.5px solid white;
   position: relative;
-  margin: 0 10px 0 10px;
+  margin: 10px 0 10px 0;
   cursor: pointer;
 }
 
@@ -756,20 +753,23 @@ button:hover {
 
 .footer-ul {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.footer-ul a:nth-child(n + 2) {
+.footer-ul a:nth-child(n + 1) {
   text-decoration: none;
-  margin: 0 10px 0 10px;
+  margin: 10px 0 10px 0;
 }
 
-.footer-ul a:first-child {
+.footer-ul a:nth-child(n + 3) {
   text-decoration: none;
-  margin: 0 10px 0 0;
+  margin: 10px 0 0 0;
 }
 
 .footer-ul a {
   color: #54af91;
+  font-weight: 300;
 }
 
 .footer-ul a li {
@@ -811,6 +811,32 @@ button:hover {
 
   .payment-movie-wrapper {
     min-height: 30vh;
+  }
+
+  .footer-ul a:nth-child(n + 2) {
+    text-decoration: none;
+    margin: 0 10px 0 10px;
+  }
+
+  .footer-ul a:first-child {
+    text-decoration: none;
+    margin: 0 10px 0 0;
+  }
+
+  .some-wrapper {
+    flex-direction: row;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, 10%);
+  }
+
+  .some-wrapper div {
+    margin: 0 10px 0 10px;
+  }
+
+  .footer-ul {
+    flex-direction: row;
   }
 }
 
