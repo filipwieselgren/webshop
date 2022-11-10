@@ -880,6 +880,7 @@ button:hover {
     width: 50%;
     align-items: center;
     height: 80%;
+    margin-bottom: 100px;
   }
 
   .costNItem-wrapper {
