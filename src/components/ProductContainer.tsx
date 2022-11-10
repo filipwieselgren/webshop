@@ -1,4 +1,5 @@
 import { IMovies } from "../models/IMovies";
+import logo from "../images/logo.png";
 
 interface IProducts {
   showMovies: IMovies;
@@ -26,6 +27,10 @@ export const ProductContainer = (props: IProducts) => {
       alt="Movie image"
       className="img-frontpage"
       onClick={showMovieInfo}
+      onError={(e) => {
+        e.currentTarget.src = logo;
+        e.currentTarget.className = "noImg";
+      }}
     />
   );
 
@@ -47,6 +52,8 @@ export const ProductContainer = (props: IProducts) => {
       {movieImg}
     </div>
   );
+
+  console.log(props.showMovies);
 
   return <>{productHtml}</>;
 };
