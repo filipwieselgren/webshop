@@ -742,6 +742,14 @@ button:hover {
   cursor: pointer;
 }
 
+.some-circle:nth-child(n + 1) {
+  margin: 10px 0 10px 0;
+}
+
+.some-circle:last-child {
+  margin: 10px 0 0 0;
+}
+
 .footer-icon {
   font-size: 1rem;
   position: absolute;
