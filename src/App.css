@@ -480,6 +480,7 @@ button:hover {
 
 .payment-body-wrapper {
   min-height: 90vh;
+  margin-bottom: 100px;
 }
 
 .totalcost-wrapper {
@@ -570,7 +571,6 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  margin-bottom: 100px;
 }
 
 .payment-title {
@@ -792,7 +792,6 @@ button:hover {
 
   .payment-wrapper {
     align-items: center;
-    margin-bottom: 100px;
   }
 
   .btns-wrapper {
@@ -886,7 +885,6 @@ button:hover {
     width: 50%;
     align-items: center;
     height: 80%;
-    margin-bottom: 100px;
   }
 
   .costNItem-wrapper {
