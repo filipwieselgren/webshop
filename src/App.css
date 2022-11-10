@@ -570,6 +570,7 @@ button:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  margin-bottom: 100px;
 }
 
 .payment-title {
@@ -791,6 +792,7 @@ button:hover {
 
   .payment-wrapper {
     align-items: center;
+    margin-bottom: 100px;
   }
 
   .btns-wrapper {
