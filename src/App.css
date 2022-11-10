@@ -367,6 +367,7 @@ button:hover {
   flex-wrap: wrap;
   align-items: flex-end;
   justify-content: space-between;
+  color: #54af91;
 }
 
 .loader span {
@@ -478,7 +479,7 @@ button:hover {
 }
 
 .payment-body-wrapper {
-  /* min-height: 100vh; */
+  min-height: 90vh;
 }
 
 .totalcost-wrapper {
@@ -577,6 +578,7 @@ button:hover {
   font-size: 1.5rem;
   text-align: center;
   margin-top: 20px;
+  padding: 0 2em;
 }
 
 .payform {
@@ -673,6 +675,10 @@ button:hover {
   box-shadow: 1px 2px 5px #171717;
 }
 
+.costNItem-wrapper {
+  min-height: 70vh;
+}
+
 @media only screen and (min-width: 768px) {
   .cart-list,
   .cart-total-container {
@@ -746,7 +752,7 @@ button:hover {
   .payment-wrapper {
     width: 50%;
     align-items: center;
-    height: 95%;
+    height: 80%;
   }
 
   .costNItem-wrapper {
