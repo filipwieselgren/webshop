@@ -430,11 +430,11 @@ button:hover {
 }
 
 .noImg {
-  width: 8em;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color: #54af91;
 }
 
 .info-container {

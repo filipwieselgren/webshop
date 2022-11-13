@@ -28,7 +28,8 @@ export const ProductContainer = (props: IProducts) => {
       className="img-frontpage"
       onClick={showMovieInfo}
       onError={(e) => {
-        e.currentTarget.src = logo;
+        e.currentTarget.src = "";
+        e.currentTarget.alt = props.showMovies.name;
         e.currentTarget.className = "noImg";
       }}
     />
