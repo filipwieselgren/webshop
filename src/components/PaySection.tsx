@@ -114,7 +114,7 @@ const PaySection = () => {
   if (wrongName) {
     nameWrong = (
       <div className="card-number-wrong">
-        Something went wrong here. This field can't be empty'
+        Something went wrong here. This field can't be empty.
       </div>
     );
   }
