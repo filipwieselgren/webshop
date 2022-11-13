@@ -285,6 +285,8 @@ button:hover {
   padding: 2em 5em;
   font-size: 1.1rem;
   font-weight: 200;
+  max-height: 50vh;
+  overflow: scroll;
 }
 
 .modal-bottomInfo {
