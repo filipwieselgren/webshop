@@ -25,13 +25,14 @@ export const ShowModal = (props: IModal) => {
     }, 500);
   };
 
-  console.log(props.singleMovie);
-
   return (
     <>
       <div className="title-wrapper">
-        {movieAdded ? <div className="added-modal">Movie added</div> : <></>}
-        <h3>{props.singleMovie.name}</h3>
+        {movieAdded ? (
+          <div className="added-modal">Movie added</div>
+        ) : (
+          <h3>{props.singleMovie.name}</h3>
+        )}
       </div>
 
       <div className="description">{props.singleMovie.description}</div>
