@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IPayment } from "../models/IPayment";
 
@@ -14,26 +14,48 @@ const PaySection = () => {
   const [cardNumberLength, setCardNumberLength] = useState("");
   const [monthYearLength, setMonthYear] = useState("");
   const [cardNumber, setCardNumber] = useState(false);
+  const [wrongEmail, setWrongEmail] = useState(false);
+  const [wrongName, setWrongName] = useState(false);
+  const [email, setEmail] = useState([""]);
+  const [inputName, setInputName] = useState("");
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setEmail([]);
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
 
     if (name === "cvc") {
+      setCardNumber(false);
       const limit = 4;
       setCvcLength(e.target.value.slice(0, limit - 1));
     }
     if (name === "cardNumber") {
+      setCardNumber(false);
       const limit = 13;
       setCardNumberLength(e.target.value.slice(0, limit - 1));
     }
     if (name === "monthYear") {
+      setCardNumber(false);
       const limit = 5;
       setMonthYear(e.target.value.slice(0, limit - 1));
     }
 
-    console.log();
+    if (name === "email") {
+      let correctEmail = value.split("").filter((c) => c == "@");
+
+      setWrongEmail(false);
+
+      setEmail(correctEmail);
+    }
+
+    if (name === "name") {
+      setWrongName(false);
+      setInputName(e.target.value);
+    }
 
     setDetails((prev) => {
       return { ...prev, [name]: value };
@@ -43,7 +65,14 @@ const PaySection = () => {
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log("För kort");
+    console.log("email.length:", email.length);
+
+    if (email.length === 0) {
+      setWrongEmail(true);
+      return;
+    }
+
+    setWrongEmail(false);
 
     if (
       cvcLength.length < 3 ||
@@ -53,6 +82,12 @@ const PaySection = () => {
       setCardNumber(true);
       return;
     }
+
+    if (inputName.length === 0) {
+      setWrongName(true);
+      return;
+    }
+
     localStorage.clear();
     setCardNumber(false);
     navigate("/confirmation");
@@ -67,6 +102,22 @@ const PaySection = () => {
       </div>
     );
   }
+  let emailrWrong = <></>;
+  if (wrongEmail) {
+    emailrWrong = (
+      <div className="card-number-wrong">
+        Something went wrong here. Maybe you forgot to include "@"?
+      </div>
+    );
+  }
+  let nameWrong = <></>;
+  if (wrongName) {
+    nameWrong = (
+      <div className="card-number-wrong">
+        Something went wrong here. This field can't be empty'
+      </div>
+    );
+  }
 
   return (
     <>
@@ -74,7 +125,7 @@ const PaySection = () => {
         <h4 className="payment-title">
           Fill in your information below and you are ready to stream.
         </h4>
-        <form className="payform" onSubmit={handleSubmit}>
+        <form className="payform" onSubmit={handleSubmit} noValidate>
           <label htmlFor="form-email">Email</label>
           <input
             type="email"
@@ -84,6 +135,7 @@ const PaySection = () => {
             required
             onChange={handleChange}
           />
+          {emailrWrong}
           <label htmlFor="card-details">Card Details</label>
           <div className="card-details-wrapper">
             <input
@@ -121,6 +173,7 @@ const PaySection = () => {
           </div>
 
           <label htmlFor="cardName">Name on card</label>
+
           <input
             type="text"
             name="name"
@@ -129,6 +182,7 @@ const PaySection = () => {
             required
             onChange={handleChange}
           />
+          {nameWrong}
 
           <button type="submit" className="payBtn">
             Pay

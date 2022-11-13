@@ -636,10 +636,6 @@ button:hover {
   width: 100%;
 }
 
-.nameInput {
-  margin-bottom: 40px;
-}
-
 .cardNumber {
   border-radius: 5px 5px 0 0;
   border-bottom: 0.5px solid white;
@@ -672,6 +668,7 @@ button:hover {
   border: none;
   border-radius: 5px;
   box-shadow: 1px 2px 5px #17171789;
+  margin-top: 40px;
 }
 
 .card-number-wrong {
