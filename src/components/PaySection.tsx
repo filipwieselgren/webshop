@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { IPayment } from "../models/IPayment";
 
 const PaySection = () => {
@@ -12,6 +13,8 @@ const PaySection = () => {
   const [cvcLength, setCvcLength] = useState("");
   const [cardNumberLength, setCardNumber] = useState("");
   const [monthYearLength, setMonthYear] = useState("");
+
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
@@ -38,6 +41,8 @@ const PaySection = () => {
 
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    navigate("/confirmation");
   };
 
   return (

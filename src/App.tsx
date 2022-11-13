@@ -6,6 +6,7 @@ import { Payment } from "./components/Payment";
 import { IMovies } from "./models/IMovies";
 import { SetStateAction } from "react";
 import { ICart } from "./models/ICart";
+import Confirmation from "./components/Confirmation";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             path="/payment"
             element={<Payment cart={[]} showPayment={false} />}
           ></Route>
+          <Route path="/confirmation" element={<Confirmation />}></Route>
         </Routes>
       </BrowserRouter>
     </>
