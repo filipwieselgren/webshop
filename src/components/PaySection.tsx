@@ -11,8 +11,9 @@ const PaySection = () => {
     name: "",
   });
   const [cvcLength, setCvcLength] = useState("");
-  const [cardNumberLength, setCardNumber] = useState("");
+  const [cardNumberLength, setCardNumberLength] = useState("");
   const [monthYearLength, setMonthYear] = useState("");
+  const [cardNumber, setCardNumber] = useState(false);
 
   const navigate = useNavigate();
 
@@ -25,7 +26,7 @@ const PaySection = () => {
     }
     if (name === "cardNumber") {
       const limit = 13;
-      setCardNumber(e.target.value.slice(0, limit - 1));
+      setCardNumberLength(e.target.value.slice(0, limit - 1));
     }
     if (name === "monthYear") {
       const limit = 5;
@@ -42,8 +43,30 @@ const PaySection = () => {
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    console.log("För kort");
+
+    if (
+      cvcLength.length < 3 ||
+      cardNumberLength.length < 12 ||
+      monthYearLength.length < 4
+    ) {
+      setCardNumber(true);
+      return;
+    }
+    localStorage.clear();
+    setCardNumber(false);
     navigate("/confirmation");
   };
+
+  let cardNumberWrong = <></>;
+  if (cardNumber) {
+    cardNumberWrong = (
+      <div className="card-number-wrong">
+        Something went wrong here. Your card number must include 12 digits, the
+        month and year must include 4 digits and the cvc must include 3 digits.
+      </div>
+    );
+  }
 
   return (
     <>
@@ -67,6 +90,7 @@ const PaySection = () => {
               type="number"
               name="cardNumber"
               value={cardNumberLength}
+              min="12"
               className="payInput cardNumber"
               id="card-details"
               placeholder="123 123 123 123"
@@ -77,6 +101,7 @@ const PaySection = () => {
               type="number"
               name="monthYear"
               value={monthYearLength}
+              min="4"
               className="payInput cardMY"
               placeholder="MM/YY"
               required
@@ -85,12 +110,14 @@ const PaySection = () => {
             <input
               type="number"
               name="cvc"
+              min="3"
               value={cvcLength}
               className="payInput cvcNumber"
               placeholder="CVC"
               required
               onChange={handleChange}
             />
+            {cardNumberWrong}
           </div>
 
           <label htmlFor="cardName">Name on card</label>
